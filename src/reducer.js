@@ -3,6 +3,7 @@ const cart = (state = [], action) => {
   switch(action.type) {
 
     case 'ADD_CART':
+      console.log(state);
       return [
         ...state,
         action.item

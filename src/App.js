@@ -18,10 +18,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function App({ dispatch }) {
+function App({ dispatch, cart }) {
   const classes = useStyles();
 
-  function addToCart(){
+  function addToCart() {
     console.log('add item');
     dispatch({type: 'ADD_CART', item: 'test'})
   }
@@ -57,7 +57,7 @@ function App({ dispatch }) {
         <Grid item xs={6}>
           <Paper>Cart</Paper>
           <Grid container spacing={3}>
-
+            {cart}
           </Grid>
         </Grid>
       </Grid>
@@ -65,4 +65,10 @@ function App({ dispatch }) {
   );
 }
 
-export default connect()(App);
+const mapStateToProps = (state) => {
+  return {
+    cart: state
+  }
+}
+
+export default connect(mapStateToProps)(App);
