@@ -4,6 +4,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import {connect} from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,8 +18,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function App() {
+function App({ dispatch }) {
   const classes = useStyles();
+
+  function addToCart(){
+    console.log('add item');
+    dispatch({type: 'ADD_CART', item: 'test'})
+  }
 
   return (
     <div className={classes.root}>
@@ -41,7 +47,7 @@ function App() {
               Item 2
             </Grid>
             <Grid item xs={12}>
-              Item 3 <Button> Add To Cart</Button>
+              Item 3 <Button onClick={addToCart}> Add To Cart</Button>
             </Grid>
             <Grid item xs={12}>
               Item 3
@@ -51,12 +57,7 @@ function App() {
         <Grid item xs={6}>
           <Paper>Cart</Paper>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
-              Item 1
-            </Grid>
-            <Grid item xs={12}>
-              Item 2
-            </Grid>
+
           </Grid>
         </Grid>
       </Grid>
@@ -64,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect()(App);
