@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import {connect} from 'react-redux';
+import CartList from './cartList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,7 +58,7 @@ function App({ dispatch, cart }) {
         <Grid item xs={6}>
           <Paper>Cart</Paper>
           <Grid container spacing={3}>
-            {cart}
+            <CartList items={cart} />
           </Grid>
         </Grid>
       </Grid>
